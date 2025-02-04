@@ -29,6 +29,7 @@ class CatFacts:
     def get_cats_facts(self)-> Union['CatFact', List['CatFact']]:
         url = self.get_url(self.animal_type, self.amount, self.random)
         response = requests.get(url)
+        assert response.status_code == 200
         data = response.json()
         return DataOperations.from_data(data)
 
